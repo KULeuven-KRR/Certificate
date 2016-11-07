@@ -23,19 +23,16 @@
 \usepackage{background}
 \usetikzlibrary{calc}
 \usetikzlibrary{decorations.pathmorphing}
+
 %
 \SetBgScale{1}
 \SetBgAngle{0}
 \SetBgColor{black}
 \SetBgContents{
 \begin{tikzpicture}[overlay,remember picture]
-	    \draw [	dashed,line width=10pt,color=DarkGreen,
-		       %%top color=magenta!10,middle color = blue!10,bottom color = green!10
-	           ,rounded corners=20pt,double=Blue,double distance=10pt
-	          ]
-	          ($ (current page.north west) + (1cm,-1cm) $)
-	          rectangle
-	         ($ (current page.south east) + (-1cm,1cm) $);
+		%\begin{minipage}[l]{2.5in}
+		%	\sigskip \signature{}{\phantom{p} \formattedorganiser{} \phantom{g} \\ Organiser }
+		%\end{minipage}%
 \end{tikzpicture}
 }
 %
@@ -47,7 +44,8 @@
 		\def\beginskip{\vskip0.5875in plus 0.1in}
 % % some colors
 \definecolor{title}{RGB}{180,0,0}
-\definecolor{other}{RGB}{171,0,255}
+\definecolor{kublueone}{RGB}{80,146,179}
+\definecolor{kubluetwo}{RGB}{18,60,117}
 \definecolor{name}{RGB}{255,0,0}
 \definecolor{phd}{RGB}{0,0,250}
 %
@@ -60,32 +58,34 @@
 	%
 	\pagestyle{empty}
 	\DTLforeach{names}{%   %%% these constitute running content
-		\dg=degree, \name=Name,\dgn=Dgn, \sub=subject, \inst=inst, \place=place}{%
+		\name=Name, \organiser=Organiser, \firstyear=FirstYear, \lastyear=LastYear}{%
 		\linespread{2}\selectfont
-		\TileWallPaper{1\paperwidth}{1\paperheight}{picture/papers/25.jpg}
-		\rotatebox{90}{\CenterWallPaper{0.4}{picture/seal/seal.pdf}}%
+		%\TileWallPaper{1\paperwidth}{1\paperheight}{picture/papers/1.jpg}
+		%\rotatebox{90}{\CenterWallPaper{0.4}{picture/seal/seal.pdf}}%
 		%---------------------------------------------------
 		\hspace*{-20pt}
 		\noindent
 		\begin{minipage}[l]{1.4in}%
 			%\noindent
-			\includegraphics[width=.85\textwidth]{sx}
+			\includegraphics[width=1\textwidth]{picture/KULeuven-logo-2012.png}
 		\end{minipage}%
 		\hfill
 		\begin{minipage}[c]{7.2in}%
+			\vskip1.8em
 			{\centering
 			{\onehalfspacing
-			{\LARGE\bfseries {\color{other}{\fontfamily{pzc}\selectfont{Department of Questions \& Answers}}}}\\[0.6em]
-			{\LARGE\bfseries {\color{phd}{{\TeX.stackexchange.com}}}}\\[0.3em]%\initfamily
-			{\calligra World wide web} -- {\calligra INFTY\\}}
+			{\LARGE\bfseries {Department of Computer Science}}\\[0.6em]
+			{\Large\bfseries {\color{kublueone}{Research Group Declarative Languages and Artificial Intelligence}}}\\[0.3em]%\initfamily
+			%{\calligra World wide web} -- {\calligra INFTY\\}
+			}
 			%\vskip0.4em
-			{\large \TeX.Stack Exchange Activities on\\}%
-			{\large\bfseries\color{phd}{Answer the Unanswered}}
+			{\LARGE DTAI Seminar Series} \Large{(3 ECTS)}%
+			%{\large\bfseries\color{phd}{Answer the Unanswered}}
 			\par}%
 		\end{minipage}%
 		\hfill
 		\begin{minipage}[r]{1.4in}
-			\reflectbox{\includegraphics[width=1\textwidth]{{duck1}}}
+			\includegraphics[width=1\textwidth]{{picture/dtai.jpg}}
 		\end{minipage}%
 		\vskip1em
 		%
@@ -97,9 +97,9 @@
 		\begin{minipage}[c]{7.2in}
 			{\centering%
 			{\onehalfspacing
-			{\Large\bfseries \color{title}{Certificate of Participation}\par}
+			{\Large\bfseries \color{kublueone}{Certificate of Participation}\par}
 			\vskip0.25em
-			{\color{DeepPink}\Large\decofourleft\quad{\color{blue}\decoone}\quad\decofourright}
+			%{\color{DeepPink}\Large\decofourleft\quad{\color{blue}\decoone}\quad\decofourright}
 			\par}}
 		\end{minipage}%
 		%
@@ -111,12 +111,14 @@
 		\vskip1.8em
 		%
 		{%
+		\noindent
 		\doublespacing	
-		This is to certify that\, \uuline{\emph{\large\sffamily\color{name}{{{\color{DarkRed}\fontfamily{frc}\selectfont{\bfseries\dg. \name}}}}}}, {\dgn}  of {\sub}, {\inst}, {\place}
-		has participated in the {\bfseries \color{FireBrick}{Answer the Unanswered Activity}}
-		at  ``\emph{\color{DarkBlue}{\bfseries TeX.stackexchange website}}''
-		organized  by the TeX.stackexhange community, from
-		16\textsuperscript{th} to 27\textsuperscript{th} August, 2012.
+		\centering{
+		This is to certify that from \firstyear{} to \lastyear{} \\ 
+		\textbf{\name{}} \\ 
+		~~~~~~~~~~~~~~~~~~~~~~ % don't ask me why this is needed in a centering environment??
+		has participated in the \textbf{\color{kublueone}{DTAI Seminar Series}} organized by the KU Leuven.
+		}
 		}
 		
 		\noindent
@@ -124,21 +126,21 @@
 		\vfill
 		\hspace{-40pt}
 		%
+		%\begin{minipage}[l]{2.5in}
+		%	\sigskip \signature{}{\phantom{p} \formattedorganiser{} \phantom{g} \\ Organiser }
+		%\end{minipage}%
+		%
+		\hfill
+		%
+		%\begin{minipage}[l]{2.5in}
+		%	\sigskip \signature{}{\phantom{p} \formattedorganiser{} \phantom{g} \\ Organiser }
+		%\end{minipage}%
+		%
+		\hfill
+		%
 		\begin{minipage}[l]{2.5in}
-			\sigskip \signature{}{\phantom{p}Stefan Kottwitz\phantom{g} \\ Moderator }
+			\sigskip \signature{}{\phantom{p} Prof. \organiser{} \phantom{g} \\ Organiser }
 		\end{minipage}%
-		%
-		\hfill
-		%
-		\begin{minipage}[l]{2.25in}
-			\sigskip \signature{}{Joseph Wright \\ Moderator }
-		\end{minipage}%
-		%
-		\hfill
-		%
-		\begin{minipage}[r]{2.25in}
-			\sigskip \signature{}{\phantom{p}Martin Scharrer\phantom{g} \\ Moderator}
-		\end{minipage}
 		%
 		\vfil
 		\pagebreak
